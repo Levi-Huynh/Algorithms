@@ -25,3 +25,29 @@ Linearithmic O(n log n)
 Polynomial O(n^c)
 Exponential O(c^n)
 Factorial O(n!)
+
+
+#O(n)
+def foo(n):
+  sq_root = int(math.sqrt(n))
+  for i in range(0, sq_root): #O(n)
+    print(i)
+
+O(n^3)
+def bar(x):
+  sum = 0 #O(1)
+  for i in range(0, 1463): #O(n)
+    i += sum #O(1)
+    for j in range(0, x): #O(n)
+      for k in range(x, x + 15): #O(n)   
+        sum += 1
+
+#O(n^2)
+def baz(array):
+  print(array[1]) 
+  midpoint = len(array) // 2 #O(logn)
+  for i in range(0, midpoint):#O(n)
+    print(array[i])
+  for _ in range(1000): #O(n)
+    print('hi')
+
