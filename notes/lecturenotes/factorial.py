@@ -2,10 +2,10 @@
 # factorial ex:
 # 4! = 4x3x2x1
 
-#input type
-#output type
-#constraints,
-#size
+# input type
+# output type
+# constraints,
+# size
 
 """
 ex: 
@@ -31,22 +31,28 @@ constraints:
     
 """
 
+
 def factorial(n):
-    if n<=1:
+    if n <= 1:
         return 1
-    return n*factorial(n-1) # O(n) rt # space: O(n) (memory O(c) created n times function is called)
+    # O(n) rt # space: O(n) (memory O(c) created n times function is called)
+    return n*factorial(n-1)
 
-print(factorial(10))
 
-#4*3*2*1 
-#O(n)
+# print(factorial(10))
+
+# 4*3*2*1
+# O(n)
+
+
 def it_factorial(n):
-    
-    tracker =1
-    for i in range(1, n+1): #range starts 1, 2, 3, ends 4+1 #runs n times
+
+    tracker = 1
+    for i in range(1, n+1):  # range starts 1, 2, 3, ends 4+1 #runs n times
                                 # i =1, 2, 3, 4, 5
         tracker *= i
-        return result    
+        return result
+
 
 """
 rule:
@@ -62,24 +68,30 @@ for i in range(2, n+1)
 #mem cache used when repetition may cause a lot slowing /db work/not able to store this much for each user(doesnt have to be recursion)
 
 """
-#memoization memcache dynamic programming 
-#O(n)
-cache = {} #dictionary [n=fib(n)]
-def fibonnaci(n):
-    #use cache now don't have to repeat f(n) in various parts of tree
+# memoization memcache dynamic programming
+# O(n)
+cache = {}  # dictionary [n=fib(n)]
+
+
+def fib(n):
+    # use cache now don't have to repeat f(n) in various parts of tree
     if n in cache.keys():
         return cache[n]
     if n == 1:
         return 1
     if n == 0:
         return 0
-    fib_res= fibonnaci(n-1) + fibonnaci(n-2) #def of recursive calling this recursive case until base case is reached
+    # def of recursive calling this recursive case until base case is reached
+    fib_res = fib(n-1) + fib(n-2)
     # store result of f(n) in cache
-    cache[n] = fib_result
+    cache[n] = fib_res
+    return fib_res
 
 
-#functools import lru_cache - built on memoization
+print("res:", fib(6))
 
+# functools import lru_cache - built on memoization
+"""
 @lru_cache(maxsize=500)
 def lru_fib(n):
     if n==0:
@@ -87,7 +99,7 @@ def lru_fib(n):
     if n ==1:
         return 1
     return fibonnaci(n-1) + fibonnaci(n-2)
-
+"""
 
 # given array, find the integer that appears an odd number of times
 # pos & neg, always only 1 int that appears an odd number of times
@@ -109,15 +121,17 @@ plan
     -who are we solving this for? what is the purpose? worth spending to optimize?
     
     """
-#rt 2n (same scope add) => O(n)
-#space n O(n)
+# rt 2n (same scope add) => O(n)
+# space n O(n)
+
+
 def find_it(seq):
     freq_dict = {}
     for num in seq:
         if num not in freq_dict:
             freq_dict[num] = 1
         else:
-            freq_dict[num] +=1
-    for k,v in freq_dict.items():
-        if v %2 !=0:
+            freq_dict[num] += 1
+    for k, v in freq_dict.items():
+        if v % 2 != 0:
             return k
