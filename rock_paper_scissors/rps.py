@@ -26,8 +26,7 @@ In Python, you can concatenate two lists with the + operator. However, you'll wa
 If you opt to define an inner recursive helper function, don't forget to make an initial call to the recursive helper function to kick off the recursion.
 [LIST + LIST]
 
-"""
-"""
+
 def helper([]):
 rps = ["rock", "paper", "scissors"]
 
@@ -39,32 +38,21 @@ def rock_paper_scissors(n):
     return cache[n]
   if n not in cache:
     cache[n] = helper(3^n)
-    """
-
-
-"""
-if __name__ == "__main__":
-  if len(sys.argv) > 1:
-    num_plays = int(sys.argv[1])
-    print(rock_paper_scissors(num_plays))
-  else:
-    print('Usage: rps.py [num_plays]')
-
-
-
-print("perms:", str(res))
 """
 
 
 def recurse(prev, n, all_results):
-    # add r, or p, or s to prev
+        # add r, or p, or s to prev
     if n == 0:
-        all_results.append(prev)  #ENTIRE RECURSION FUNCTION IS YOUR LOOP, BASE IS WHERE YOU BREAK LOOP
-        return prev #prev is list # RETURN ONLY OCCURS WHEN N==0 
+        # ENTIRE RECURSION FUNCTION IS YOUR LOOP, BASE IS WHERE YOU BREAK LOOP
+        all_results.append(prev)
+        return prev
+    # prev is list # RETURN ONLY OCCURS WHEN N==0
     # adds 3 arrays that start with rock
-    recurse(prev + ['rock'], n - 1, all_results) #rhis is logic youre doing on each loop, with the prev=[] first, 
-                                                  # and n = n-1 in recurse, & results = [] (from main function)
-                                                  # recurse([], n, results) (ORDER OF ARGS SET IN HELPER FUNCTION )
+    # rhis is logic youre doing on each loop, with the prev=[] first,
+    recurse(prev + ['rock'], n - 1, all_results)
+    # and n = n-1 in recurse, & results = [] (from main function)
+    # recurse([], n, results) (ORDER OF ARGS SET IN HELPER FUNCTION )
     # add 3 arrays that start with paper
     recurse(prev + ['paper'], n - 1, all_results)
     # add 3 arrays that start with scissors
@@ -74,11 +62,15 @@ def recurse(prev, n, all_results):
 def rock_paper_scissors(n):
     results = []
     recurse([], n, results)
-
     return results
-
 
 
 print(rock_paper_scissors(2))
 
 
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        num_plays = int(sys.argv[1])
+        print(rock_paper_scissors(num_plays))
+    else:
+        print('Usage: rps.py [num_plays]')

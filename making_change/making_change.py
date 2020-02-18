@@ -2,8 +2,27 @@
 
 import sys
 
+"""
+input: n (money in cents), list [] of coin dnominations, 
+output: n (total ways change can be made for the input )
+For example, making_change(10) should return 4, since there are 4 ways to make change for 10 cents using pennies, nickels, dimes, quarters, and half-dollars:
+
+We can make change for 10 cents using 10 pennies
+We can use 5 pennies and a nickel
+We can use 2 nickels
+We can use a single dime
+
+
+"""
+
+cache ={0:1, 10:4}
+
+
 def making_change(amount, denominations):
-  pass 
+  if amount <= 0:
+    return 0
+  if denominations == 0:
+    return 0
 
 
 if __name__ == "__main__":

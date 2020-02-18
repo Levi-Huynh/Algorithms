@@ -14,14 +14,15 @@ import argparse
 """
 
 # O(n^2)
-"""
+
+
 def find_max_profit(prices):
     results = []
-    for i in range(0, len(prices)): #O(n)
+    for i in range(0, len(prices)):  # O(n)
 
         curr_buy = prices[i]
         print("current buy:", curr_buy)
-        for j in range(0, len(prices)): #O(n)
+        for j in range(0, len(prices)):  # O(n)
             if i > j:
                 curr_sell = prices[j]
                 print("curr sell:", curr_sell, "curr buy:", curr_buy)
@@ -34,8 +35,6 @@ def find_max_profit(prices):
 
 print(find_max_profit([1050, 270, 1540, 3800, 2]))
 """
-
-""""
 def opt_max_profit(prices):
     results = []
     for i in range(0, len(prices)):  # O(n)
@@ -57,12 +56,12 @@ print(opt_max_profit([1050, 270, 1540, 3800, 2]))
 """
 
 if __name__ == '__main__':
-  # This is just some code to accept inputs from the command line
-  parser = argparse.ArgumentParser(description='Find max profit from prices.')
-  parser.add_argument('integers', metavar='N', type=int,
-                      nargs='+', help='an integer price')
-  args = parser.parse_args()
+    # This is just some code to accept inputs from the command line
+    parser = argparse.ArgumentParser(
+        description='Find max profit from prices.')
+    parser.add_argument('integers', metavar='N', type=int,
+                        nargs='+', help='an integer price')
+    args = parser.parse_args()
 
-  print("A profit of ${profit} can be made from the stock prices {prices}.".format(
-      profit=find_max_profit(args.integers), prices=args.integers))
-  """
+    print("A profit of ${profit} can be made from the stock prices {prices}.".format(
+        profit=find_max_profit(args.integers), prices=args.integers))

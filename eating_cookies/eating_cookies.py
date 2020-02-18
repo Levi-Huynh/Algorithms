@@ -43,7 +43,7 @@ def eating_cookies(n, cache={0: 1, 1: 1, 2: 2, 3: 4}):
     if n not in cache:
         cache[n] = eating_cookies(
             n-1, cache) + eating_cookies(n-2, cache) + eating_cookies(n-3, cache)
-    print(cache)
+    # print(cache)
     return cache[n]
 
 
