@@ -10,18 +10,20 @@ from collections import namedtuple
 # return item indexes, total cost(max), (total value from input)
 
 Item = namedtuple('Item', ['index', 'size', 'value'])
-#items = Item[0]
+# items = Item[0]
 # capacity = Item[1][1]
 mylist = []
 storeSize = []
-#mySortedList = []
+# mySortedList = []
 thing = []
 newBag = []
 profit = []
+myI = []
+myO = []
 
 
 def knapsack_solver(items, capacity):
-    #print("capacity", capacity)
+    # print("capacity", capacity)
     # items = all items in txt files
     # items[0] = first item in first file
     # item[1] = 2nd item in first file
@@ -31,14 +33,19 @@ def knapsack_solver(items, capacity):
     # capacity[3]= 200
     # capcity[5]=1000
     for a, b, c in items:
-        ratio = int(c/b)
+        ratio = float(c/b)
         mylist.append((ratio, a, b, c))  # ratio, index, size, profit
         mylist.sort()
+        global thing
         thing = reversed(mylist)
-    for a, b, c, d in thing:
+    # for i, (a, b, c, d) in enumerate(thing):
+        #yO.append((a, b, c, i))
+    #print("myO", myO)
+    for a, b, c, d in (thing):
         storeSize.append(c)
         totalsize = sum(storeSize)
-        if totalsize < capacity:
+        if totalsize <= capacity:
+            #print("totalsize:", totalsize, capacity)
             newBag.append((b, c, d))
     profit = [x[2] for x in newBag]
     totalprofit = sum(profit)
@@ -46,24 +53,44 @@ def knapsack_solver(items, capacity):
     size = [x[1] for x in newBag]
     ntotalsize = sum(size)
     #print("newBag", len(newBag), totalsize, totalprofit)
-    #totalprofit = [a]
-    print("Items to select: ", itemlist, "TotalCost: ",
+    # totalprofit = [a]
+    # print("checker: ", items[126])
+    print("Items to select: ", itemlist, "TotalCost/Size: ",
           ntotalsize, "TotalValue: ", totalprofit)
-    return
+
+# https://stackoverflow.com/questions/27240287/how-to-find-index-of-tuple-in-list-of-tuples-in-python
 
 
 """
-mytuple = ([1, 42, 81, ], [2, 42, 42], [3, 68, 56], [4, 68, 25], [5, 77, 14], [
-           6, 57, 63], [7, 17, 75], [8, 19, 41], [9, 94, 19], [10, 34, 12])
-knapsack_solver(mytuple, 100)
+def Check():
+    boo = enumerate(thing)
+    for a, b, c, d in thing:
+        print("index: ", "values: ", b, c, d)
 """
+
+
+def setUp_small():
+    file_contents = open('data/medium1.txt', 'r')
+    small_1_items = []
+
+    for line in file_contents.readlines():
+        data = line.rstrip().split()
+        small_1_items.append(
+            Item(int(data[0]), int(data[1]), int(data[2])))
+    return small_1_items
+
+
+mytuple = ([1, 42, 81], [2, 42, 42], [3, 68, 56], [4, 68, 25], [5, 77, 14], [
+    6, 57, 63], [7, 17, 75], [8, 19, 41], [9, 94, 19], [10, 34, 12])
+knapsack_solver(setUp_small(), 100)
+
 
 # for a, b, c, d in reversed(mylist):
 # storeSize.append(c)
 # totalsize = sum(storeSize)
 # while totalsize < capacity:
 # newBag.append((b, c, d))
-#print("newbag: ", newBag[0])
+# print("newbag: ", newBag[0])
 
 """
 def myHelper(items, capacity):
@@ -71,8 +98,8 @@ def myHelper(items, capacity):
         if mylist[-1]
 """
 
-#print(" ")
-#print("CAP", capacity)
+# print(" ")
+# print("CAP", capacity)
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         capacity = int(sys.argv[2])
