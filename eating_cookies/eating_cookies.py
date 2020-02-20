@@ -25,6 +25,34 @@ As far as performance optimizations go, caching/memoization might be one avenue 
 How should we make a cache available to our recursive function through multiple recursive calls?
 """
 
+"""
+U
+-# of cookies to eat at a time: [0, 1, 2  3]
+-# n = number of cookies in jar
+output:
+-# perms/ways to eat all of cookies in jar? Integer 
+
+P
+-most likely recursion as wants number of permutations
+- base cases: 0 cookies: 0, -neg cookies: 0
+# best thing to do to build out sequences until find pattern! may be long
+cache pattern: {0: 1, 1: 1, 2: 2, 3: 4, 4: 7, 5: 13, 6:24, 7:44, 8:81}
+
+E
+-create function with 2 arguments:
+-n (number of cookies in jar) & your cache 
+-create base cases return 1 if n < =0 or n ==1 
+- initialize cache for given base case
+-check if n in cache, if so return cache[n]
+-if n not in cache, 
+    - then set cache[n] => 
+    -recursive eating_cookies of n-1, n-2, n-3 (since there are only 3
+    non zero ways to eat the cookie)
+    -return cache[n]
+
+R
+"""
+
 # cache = {}  # n=cookie(n)
 res = []
 res2 = []
@@ -48,8 +76,9 @@ def eating_cookies(n, cache={0: 1, 1: 1, 2: 2, 3: 4}):
 
 
 # would not have worked if not seen test cases
-print("answer: ", eating_cookies(5))
-# cache pattern: {0: 1, 1: 1, 2: 2, 3: 4, 4: 7, 5: 13}
+print("answer: ", eating_cookies(8))
+
+# cache pattern: {0: 1, 1: 1, 2: 2, 3: 4, 4: 7, 5: 13, 6:24, 7:44, 8:81 }
 
 
 """
