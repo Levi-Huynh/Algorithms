@@ -77,15 +77,15 @@ def eating_cookies(n, cache={0: 1, 1: 1, 2: 2, 3: 4}):
 
 # would not have worked if not seen test cases
 print("answer: ", eating_cookies(8))
+eating_cookies(8)
 
 # cache pattern: {0: 1, 1: 1, 2: 2, 3: 4, 4: 7, 5: 13, 6:24, 7:44, 8:81 }
 
 
-"""
 if __name__ == "__main__":
-  if len(sys.argv) > 1:
-    num_cookies = int(sys.argv[1])
-    print("There are {ways} ways for Cookie Monster to eat {n} cookies.".format(ways=eating_cookies(num_cookies), n=num_cookies))
-  else:
-    print('Usage: eating_cookies.py [num_cookies]')
-"""
+    if len(sys.argv) > 1:
+        num_cookies = int(sys.argv[1])
+        print("There are {ways} ways for Cookie Monster to eat {n} cookies.".format(
+            ways=eating_cookies(num_cookies), n=num_cookies))
+    else:
+        print('Usage: eating_cookies.py [num_cookies]')

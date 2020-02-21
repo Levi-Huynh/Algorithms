@@ -51,7 +51,7 @@ def it_factorial(n):
     for i in range(1, n+1):  # range starts 1, 2, 3, ends 4+1 #runs n times
                                 # i =1, 2, 3, 4, 5
         tracker *= i
-        return result
+        return tracker
 
 
 """

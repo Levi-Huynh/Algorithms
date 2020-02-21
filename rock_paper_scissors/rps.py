@@ -50,13 +50,23 @@ def recurse(prev, n, all_results):
     # prev is list # RETURN ONLY OCCURS WHEN N==0
     # adds 3 arrays that start with rock
     # rhis is logic youre doing on each loop, with the prev=[] first,
+    # can you mentally abstract this???? see below
+    # all results append prev
+    # prev stores combinations of r, p & s
+    # recurse subtracts the amount of times n i ran
+      # after each stack
+    # prev is each below, stops after 2 added
     recurse(prev + ['rock'], n - 1, all_results)
+    # ['rock', 'rock'] ['rock', 'paper'], ['rock', 'scissors']
+
     # and n = n-1 in recurse, & results = [] (from main function)
     # recurse([], n, results) (ORDER OF ARGS SET IN HELPER FUNCTION )
     # add 3 arrays that start with paper
     recurse(prev + ['paper'], n - 1, all_results)
+    #['paper', 'rock'], ['paper', 'paper'], ['paper', 'scissors']
     # add 3 arrays that start with scissors
     recurse(prev + ['scissors'], n - 1, all_results)
+    #['scissors', 'rock'], ['scissors', 'paper'], ['scissors', 'scissors']
 
 
 def rock_paper_scissors(n):
