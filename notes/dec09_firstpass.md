@@ -18,14 +18,30 @@ Time permitting, write some test cases to ensure your solution works as intended
 Improve
 This step will be the focus of the next module.
 
-Constant O(1)
-Logarithmic O(log n)
-Linear O(n)
-Linearithmic O(n log n)
+Hash table -just object in any lang (dict in python)
+
+Constant O(1) -same # of ops to get job in, despite input (1 pick of lottery ball, despite number of balls, single operation to destroy stakc of card. Index method can directly access element of array, #1 op. )
+Logarithmic O(log n) - (looking up words in dictionary, have general idea where to find our entry. Books in bookshelf that are sorted, )
+Linear O(n) - #ops for given input, is in direct proportion to n.  ^incr input size = ^incr #op . Counting coins or
+marbles,. search function  
+
+Linearithmic O(n log n) - increase # of ops it performs as a log-linear function of the input size n
+1/scan each element (n) 2) sort operation (mainly sorting algorithms)
+(quicksort, mergesort, heapsort, timsort)
 Polynomial O(n^c)
 Exponential O(c^n)
 Factorial O(n!)
 
+# O(log n) 
+def binary_search(sorted_arr, target):
+  low= 0, high = len(sorted_arr)-1
+  mid= (high-low) //2
+  if target = sorted_arr[midpoint]: #if target = midpoint
+  return midpoint
+  elif target< sorted_arr[midpoint]:
+  return binary_search(sorted_arr[:midpoint])  # recurse, with reavluating where to search using slice & midpoint, if target less than mid
+  else:
+  return binary_search(sorted_arr[midpoint:]) #if target more than mid
 
 #O(n)
 def foo(n):
@@ -51,3 +67,9 @@ def baz(array):
   for _ in range(1000): #O(n)
     print('hi')
 
+#O(n)
+def search(array, target):
+  for el in array:
+    if target == el:
+      return True
+  return False 
