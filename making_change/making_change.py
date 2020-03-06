@@ -37,8 +37,12 @@ def helper(denominations):
     m = len(denominations)
 """
 
+denominations = [1, 5, 10, 25, 50]
 
-def making_change(amount, denominations, lenDenom):
+lenDenom = len(denominations)
+
+
+def making_change1(amount, denominations, lenDenom):
     if amount == 0:
         return 1
     if amount < 0:
@@ -48,16 +52,16 @@ def making_change(amount, denominations, lenDenom):
     t1 = lenDenom-1
     t2 = amount-denominations[lenDenom-1]
 
-    print("length Denom: ", t1, "change amount: ", t2)
+    #print("length Denom: ", t1, "change amount: ", t2)
     # n, list of currency,  # makes len denom shorter by 1 (len of currency list -1)   ( + add together)          #makes amount for change shorter by 1  n/amount -  list[length-1] (list at len-1)
-    return making_change(amount, denominations, lenDenom-1) + making_change((amount-denominations[lenDenom-1]), denominations, lenDenom)
+    return making_change1(amount, denominations, lenDenom-1) + making_change1((amount-denominations[lenDenom-1]), denominations, lenDenom)
+
+# https://codereview.stackexchange.com/questions/147505/iterative-counting-change-implementation-in-mit-scheme
+# https://hackernoon.com/the-coin-change-problem-explained-ddd035a8f22f
 
 
-denominations = [1, 5, 10, 25, 50]
-lenDenom = len(denominations)
 
-print(making_change(15, denominations, lenDenom))
-
+#print(making_change(15, denominations, lenDenom))
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python making_change.py [amount]` with different amounts
@@ -65,7 +69,7 @@ if __name__ == "__main__":
         denominations = [1, 5, 10, 25, 50]
         amount = int(sys.argv[1])
         print("There are {ways} ways to make {amount} cents.".format(
-            ways=making_change(amount, denominations), amount=amount))
+            ways=making_change(amount, denominations, lenDenom), amount=amount))
     else:
         print("Usage: making_change.py [amount]")
 
